@@ -1,15 +1,22 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import '../scss/Hello.scss'
 
 const Hello = () => {
 
   const DIV_ELEMENT = useRef<HTMLDivElement>(null)
+  const [visible, setVisible]: any = useState(false)
+
+  const CloseSubTag = () => {
+    if(visible) setVisible(false)
+  }
+
+  const ShowSettings = () => {
+    visible ? setVisible(false) : setVisible(true)
+  }
 
   const Play = () => {
 
     const child: any = DIV_ELEMENT.current?.children
-    console.log(child)
-
     
     for(let i = 0; i < child.length; i++) { child[i].style.animation = 'animate 1s linear infinite' }
     child[0].style.animationDelay = '0s'
@@ -23,14 +30,16 @@ const Hello = () => {
   }
 
   return (
-    <div id='hello'>
+    <div id='hello' onClick={CloseSubTag}>
       <header>
         <div></div>
-        <div className='settings'></div>
+        <div className='settings' onClick={ShowSettings}></div>
+        {visible?
         <ul>
           <li>곡 등록</li>
           <li>곡 삭제</li>
         </ul>
+        : null}
       </header>
       <section>
         <div className='status-wrapper'>
@@ -51,6 +60,13 @@ const Hello = () => {
       <footer>
 
       </footer>
+      <div className='add-music-wrapper'>
+          <input type='text' placeholder='유튜브 링크를 입력하세요'/>
+          <div className="loading-wrapper">
+            <div className="loading"></div>
+            <p>loader 6</p>
+          </div>
+        </div>
     </div>
   )
 }
