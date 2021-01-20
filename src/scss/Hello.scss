@@ -100,17 +100,20 @@
     // footer { border-top: 1px solid #dbdbdb; }
     .add-music-wrapper {
         width: 90vw;
-        height: 60px;
         background-color: rgba(255, 255, 255, 0.2);
         position: absolute;
+        left: 50%;
+        margin-left: -45vw;
         bottom: 20px;
         display: flex;
         align-items: center;
+        flex-direction: column;
         border-radius: 10px;
-        padding: 10px;
+        padding: 0px 10px;
         box-sizing: border-box;
         input {
-            width: 100vw;
+            width: 90vw;
+            height: 60px;
             font-size: 16px;
             padding: 10px;
             box-sizing: border-box;
@@ -120,6 +123,78 @@
             background-color: rgba(255, 255, 255, 0);
             color: #dbdbdb;
             &::placeholder { color: #dbdbdb; }
+        }
+        .loading-wrapper {
+            display: inline-block;
+            height: 70px;
+            padding-bottom: 10px;
+            width: 33.3%;
+            position: relative;
+            /*margin:0 -4px -5px -2px;*/
+            transition: all .2s ease;
+
+            .loading{
+                position: relative;
+                width: 12px;
+                height: 12px;
+            
+                top: 46%;
+                top: -webkit-calc(50% - 6px);
+                top: calc(50% - 6px);
+                left: 46%;
+                left: -webkit-calc(50% - 6px);
+                left: calc(50% - 6px);
+                
+                border-radius: 12px;
+                background-color: #fff;
+                -webkit-transform-origin:  50% 50%;
+                        transform-origin:  50% 50% ;
+                -webkit-animation: loading 1s ease-in-out infinite;
+                        animation: loading 1s ease-in-out infinite;
+            }
+            
+            .loading:before{
+                content: "";
+                position: absolute;
+                background-color: rgba(255, 255, 255, .5);
+                top: 0px;
+                left: -25px;
+                height: 12px;
+                width: 12px;
+                border-radius: 12px;
+            }
+            
+            .loading:after{
+                content: "";
+                position: absolute;
+                background-color: rgba(255, 255 ,255 ,.5);
+                top: 0px;
+                left: 25px;
+                height: 12px;
+                width: 12px;
+                border-radius: 12px;
+            }
+            
+            
+            @-webkit-keyframes loading{
+                0%{-webkit-transform:rotate(0deg);}
+                50%{-webkit-transform:rotate(180deg);}
+                100%{-webkit-transform:rotate(180deg);}
+            }
+            
+            @keyframes loading{
+                0%{transform:rotate(0deg);}
+                50%{transform:rotate(180deg);}
+                100%{transform:rotate(180deg);}
+            }
+        }
+        .close-add-music {
+            width: 90vw;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-top: 1px solid #dbdbdb;
+            color: #dbdbdb;
         }
     }
 }

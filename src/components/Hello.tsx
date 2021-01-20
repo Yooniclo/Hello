@@ -4,7 +4,10 @@ import '../scss/Hello.scss'
 const Hello = () => {
 
   const DIV_ELEMENT = useRef<HTMLDivElement>(null)
+  const INPUT_ELEMENT = useRef<HTMLInputElement>(null)
   const [visible, setVisible]: any = useState(false)
+  const [loading, setLoading]: any = useState(false)
+  const [addmusic, setAddmusic]: any = useState(false)
 
   const CloseSubTag = () => {
     if(visible) setVisible(false)
@@ -12,6 +15,10 @@ const Hello = () => {
 
   const ShowSettings = () => {
     visible ? setVisible(false) : setVisible(true)
+  }
+
+  const CheckURL = () => {
+    INPUT_ELEMENT.current?.value !== '' ? setLoading(true) : setLoading(false)
   }
 
   const Play = () => {
@@ -36,7 +43,7 @@ const Hello = () => {
         <div className='settings' onClick={ShowSettings}></div>
         {visible?
         <ul>
-          <li>곡 등록</li>
+          <li onClick={()=>setAddmusic(true)}>곡 등록</li>
           <li>곡 삭제</li>
         </ul>
         : null}
@@ -60,13 +67,18 @@ const Hello = () => {
       <footer>
 
       </footer>
+      { addmusic?
       <div className='add-music-wrapper'>
-          <input type='text' placeholder='유튜브 링크를 입력하세요'/>
-          <div className="loading-wrapper">
-            <div className="loading"></div>
-            <p>loader 6</p>
+          <input type='text' placeholder='유튜브 링크를 입력하세요' spellCheck={false} ref={INPUT_ELEMENT} onKeyUp={CheckURL} />
+          { loading ? 
+          <div className='loading-wrapper'>
+            <div className='loading'></div>
           </div>
-        </div>
+          : null }
+          <div className='add-result'></div>
+          <div className='close-add-music' onClick={()=>setAddmusic(false)}>닫기</div>
+      </div> 
+      : null }
     </div>
   )
 }
