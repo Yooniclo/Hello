@@ -45,15 +45,17 @@ app.use(async ctx => {
     await Sendfile(ctx, Path.join(__dirname, '../public/hello/index.html'))
 })
 
+router.get('/init', async (ctx: Context) => {
+    const list = await fs.readdirSync('mp3')
+    ctx.body = { playlist: list }
+})
+
 router.post('/backend/extract', async (ctx: Context) => {
-    console.log('KEY PRESS')
     try {
         let info = await ytdl.getInfo(ctx.request.body.url)
         ytdl(ctx.request.body.url, { filter: 'audioonly' }).pipe(fs.createWriteStream('mp3/' + info.videoDetails.title + '.mp3'))
-        ctx.body = {message: 'Success'}
+        ctx.body = { message: 'Success' }
     } catch (e) {
-        ctx.body = {message: 'Fail'}
+        ctx.body = { message: 'Fail' }
     }
-    
-    
 })

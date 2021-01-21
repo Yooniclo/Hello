@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import '../scss/Hello.scss'
 
 const Hello = () => {
@@ -9,6 +9,16 @@ const Hello = () => {
   const [visible, setVisible]: any = useState(false)
   const [loading, setLoading]: any = useState(false)
   const [addmusic, setAddmusic]: any = useState(false)
+  const [playlist, setPlaylist]: any = useState([])
+
+  useEffect(() => { 
+    const GetPlayList = async () => {
+      const response = await fetch(process.env.REACT_APP_URL + '/init')
+      let json = await response.json()
+      setPlaylist(json)
+    }
+    GetPlayList()
+  }, [])
 
   const CloseSubTag = () => {
     if(visible) setVisible(false)
@@ -73,6 +83,7 @@ const Hello = () => {
     child[5].style.animationDelay = '0.5s'
     child[6].style.animationDelay = '0.7s'
     // DIV_ELEMENT.current!.style.height = '50px'
+    console.log(playlist)
   }
 
   const CloseAddMusic = () => {
