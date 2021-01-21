@@ -10,6 +10,7 @@ const Hello = () => {
   const [loading, setLoading]: any = useState(false)
   const [addmusic, setAddmusic]: any = useState(false)
   const [playlist, setPlaylist]: any = useState([])
+  const [isStop, setisStop]: any = useState(true)
   let audio: any
 
   useEffect(() => { 
@@ -100,11 +101,25 @@ const Hello = () => {
     })
 
   }
+  
+  const Stop = () => {
+    if(audio !== undefined) {
+      audio.pause()
+      setisStop(false)
+    } 
+  }
+  const Restart = () => {
+    if(audio !== undefined) {
+      audio.play()
+      setisStop(true)
+    }
+  }
 
   const CloseAddMusic = () => {
     setAddmusic(false)
     setLoading(false)
   }
+
 
   return (
     <div id='hello' onClick={CloseSubTag}>
@@ -132,6 +147,11 @@ const Hello = () => {
         </div>
         <div className='control-wrapper'>
           <button onClick={Play}>PLAY</button>
+          { isStop ?
+            <button onClick={Stop}>STOP</button>
+            :   
+            <button onClick={Restart}>RESTART</button>
+          }
         </div>
       </section>
       <footer>
