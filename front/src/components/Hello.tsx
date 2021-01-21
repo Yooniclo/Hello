@@ -4,6 +4,7 @@ import '../scss/Hello.scss'
 const Hello = () => {
 
   const DIV_ELEMENT = useRef<HTMLDivElement>(null)
+  const DIV_ELEMENT2 = useRef<HTMLDivElement>(null)
   const INPUT_ELEMENT = useRef<HTMLInputElement>(null)
   const [visible, setVisible]: any = useState(false)
   const [loading, setLoading]: any = useState(false)
@@ -17,8 +18,46 @@ const Hello = () => {
     visible ? setVisible(false) : setVisible(true)
   }
 
-  const CheckURL = () => {
-    INPUT_ELEMENT.current?.value !== '' ? setLoading(true) : setLoading(false)
+  const CheckURL = async () => {
+    if(INPUT_ELEMENT.current?.value !== '') {
+      setLoading(true)
+
+      type Data = {
+        url: string | undefined
+      }
+
+      let data: Data = {
+        url: INPUT_ELEMENT.current?.value
+      }
+      const response = await fetch(process.env.REACT_APP_URL + '/backend/extract', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(data)
+      })
+  
+      const result = await response.json()
+      
+      if(result.message === 'Success') {
+        DIV_ELEMENT2.current!.style.display = 'block'
+        DIV_ELEMENT2.current!.classList.add('success')
+        DIV_ELEMENT2.current!.innerHTML = '곡이 등록되었습니다'
+        setLoading(false)
+      } else {
+        DIV_ELEMENT2.current!.style.display = 'block'
+        DIV_ELEMENT2.current!.classList.add('fail')
+        DIV_ELEMENT2.current!.innerHTML = '유효하지 않은 URL 입니다'
+        setLoading(false)
+      }
+    } else {
+      setLoading(false)
+    }
+
+    if(INPUT_ELEMENT.current?.value.length === 0) {
+      DIV_ELEMENT2.current!.style.display = 'none'
+      DIV_ELEMENT2.current!.innerHTML = ''
+    }
   }
 
   const Play = () => {
@@ -34,6 +73,11 @@ const Hello = () => {
     child[5].style.animationDelay = '0.5s'
     child[6].style.animationDelay = '0.7s'
     // DIV_ELEMENT.current!.style.height = '50px'
+  }
+
+  const CloseAddMusic = () => {
+    setAddmusic(false)
+    setLoading(false)
   }
 
   return (
@@ -75,8 +119,8 @@ const Hello = () => {
             <div className='loading'></div>
           </div>
           : null }
-          <div className='add-result'></div>
-          <div className='close-add-music' onClick={()=>setAddmusic(false)}>닫기</div>
+          <div className='add-result' ref={DIV_ELEMENT2}></div>
+          <div className='close-add-music' onClick={CloseAddMusic}>닫기</div>
       </div> 
       : null }
     </div>
