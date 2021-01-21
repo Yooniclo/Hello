@@ -85,13 +85,13 @@ const Hello = () => {
     child[3].style.animationDelay = '0.9s'
     child[4].style.animationDelay = '0.2s'
     child[5].style.animationDelay = '0.5s'
-    child[6].style.animationDelay = '0.7s'
+    child[6].style.animationDelay = '0.8s'
     // DIV_ELEMENT.current!.style.height = '50px'
-  
 
     let random = GetRandom(0, playlist.length)
-    let audio = new Audio(process.env.REACT_APP_URL + '/hello/mp3/' + playlist[random])
+    let audio: any
     audio.pause()
+    audio = new Audio(process.env.REACT_APP_URL + '/hello/mp3/' + playlist[random])
     audio.play()
     audio.addEventListener('ended', function () {
       random = GetRandom(0, playlist.length)
