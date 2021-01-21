@@ -19,7 +19,7 @@ app.use(router.routes())
 app.use(Serve(Path.join(__dirname, '../public')))
 
 var config = {
-    port: 3000,
+    port: 5000,
     https: {
       options: {
         key: fs.readFileSync(Path.resolve(process.cwd(), '../../https-ssl/privkey1.pem'), 'utf8').toString(),
