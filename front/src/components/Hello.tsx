@@ -108,7 +108,7 @@ const Hello = () => {
   return (
     <div id='hello' onClick={CloseSubTag}>
       <header>
-        <div></div>
+        <div className='logo'>Hello!</div>
         <div className='settings' onClick={ShowSettings}></div>
         {visible?
         <ul>
