@@ -22,8 +22,8 @@ var config = {
     port: 3000,
     https: {
       options: {
-        // key: fs.readFileSync(Path.resolve(process.cwd(), 'src/ssl/privkey1.pem'), 'utf8').toString(),
-        // cert: fs.readFileSync(Path.resolve(process.cwd(), 'src/ssl/fullchain1.pem'), 'utf8').toString()
+        key: fs.readFileSync(Path.resolve(process.cwd(), '../../https-ssl/privkey1.pem'), 'utf8').toString(),
+        cert: fs.readFileSync(Path.resolve(process.cwd(), '../../https-ssl/fullchain1.pem'), 'utf8').toString()
       }
     }
 }
@@ -46,14 +46,14 @@ app.use(async ctx => {
 })
 
 router.get('/init', async (ctx: Context) => {
-    const list = await fs.readdirSync('mp3')
-    ctx.body = { playlist: list }
+    const list = await fs.readdirSync('public/hello/mp3')
+    ctx.body = list
 })
 
 router.post('/backend/extract', async (ctx: Context) => {
     try {
         let info = await ytdl.getInfo(ctx.request.body.url)
-        ytdl(ctx.request.body.url, { filter: 'audioonly' }).pipe(fs.createWriteStream('mp3/' + info.videoDetails.title + '.mp3'))
+        ytdl(ctx.request.body.url, { filter: 'audioonly' }).pipe(fs.createWriteStream('public/hello/mp3/' + info.videoDetails.title + '.mp3'))
         ctx.body = { message: 'Success' }
     } catch (e) {
         ctx.body = { message: 'Fail' }

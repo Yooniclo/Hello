@@ -70,6 +70,10 @@ const Hello = () => {
     }
   }
 
+  const GetRandom = (min: number, max: number) => {
+    return Math.floor(Math.random() * (max - min) + min)
+  }
+
   const Play = () => {
 
     const child: any = DIV_ELEMENT.current?.children
@@ -83,7 +87,17 @@ const Hello = () => {
     child[5].style.animationDelay = '0.5s'
     child[6].style.animationDelay = '0.7s'
     // DIV_ELEMENT.current!.style.height = '50px'
-    console.log(playlist)
+  
+
+    let random = GetRandom(0, playlist.length)
+    let audio = new Audio(process.env.REACT_APP_URL + '/hello/mp3/' + playlist[random])
+    audio.play()
+    audio.addEventListener('ended', function () {
+      random = GetRandom(0, playlist.length)
+      audio = new Audio('/hello/mp3/' + playlist[random])
+      audio.play()
+    })
+
   }
 
   const CloseAddMusic = () => {
