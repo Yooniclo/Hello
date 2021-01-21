@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import '../scss/Hello.scss'
+let audio: any
 
 const Hello = () => {
 
@@ -11,7 +12,6 @@ const Hello = () => {
   const [addmusic, setAddmusic]: any = useState(false)
   const [playlist, setPlaylist]: any = useState([])
   const [isStop, setisStop]: any = useState(true)
-  let audio: any
 
   useEffect(() => { 
     const GetPlayList = async () => {
@@ -90,6 +90,7 @@ const Hello = () => {
 
     let random = GetRandom(0, playlist.length)
     if(audio !== undefined) audio.pause()
+    // audio = new Audio('hello/AKMU - FREEDOM (AUDIO).mp3') <== FOR TEST
     audio = new Audio('/hello/mp3/' + playlist[random])
     audio.play()
     audio.addEventListener('ended', function () {
