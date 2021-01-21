@@ -91,6 +91,7 @@ const Hello = () => {
 
     let random = GetRandom(0, playlist.length)
     let audio = new Audio(process.env.REACT_APP_URL + '/hello/mp3/' + playlist[random])
+    audio.pause()
     audio.play()
     audio.addEventListener('ended', function () {
       random = GetRandom(0, playlist.length)
