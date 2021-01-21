@@ -10,6 +10,7 @@ const Hello = () => {
   const [loading, setLoading]: any = useState(false)
   const [addmusic, setAddmusic]: any = useState(false)
   const [playlist, setPlaylist]: any = useState([])
+  let audio: any
 
   useEffect(() => { 
     const GetPlayList = async () => {
@@ -89,9 +90,8 @@ const Hello = () => {
     // DIV_ELEMENT.current!.style.height = '50px'
 
     let random = GetRandom(0, playlist.length)
-    let audio: any
     if(audio !== undefined) audio.pause()
-    audio = new Audio(process.env.REACT_APP_URL + '/hello/mp3/' + playlist[random])
+    audio = new Audio('/hello/mp3/' + playlist[random])
     audio.play()
     audio.addEventListener('ended', function () {
       random = GetRandom(0, playlist.length)
