@@ -77,9 +77,7 @@ const Hello = () => {
   }
 
   const Play = () => {
-
     const child: any = DIV_ELEMENT.current?.children
-    
     for(let i = 0; i < child.length; i++) { child[i].style.animation = 'animate 1s linear infinite' }
     child[0].style.animationDelay = '0s'
     child[1].style.animationDelay = '0.3s'
@@ -104,12 +102,23 @@ const Hello = () => {
   
   const Stop = () => {
     if(audio !== undefined) {
+      const child: any = DIV_ELEMENT.current?.children
+      for(let i = 0; i < child.length; i++) { child[i].style.animation = '' }
       audio.pause()
       setisStop(false)
     } 
   }
   const Restart = () => {
     if(audio !== undefined) {
+      const child: any = DIV_ELEMENT.current?.children
+      for(let i = 0; i < child.length; i++) { child[i].style.animation = 'animate 1s linear infinite' }
+      child[0].style.animationDelay = '0s'
+      child[1].style.animationDelay = '0.3s'
+      child[2].style.animationDelay = '0.6s'
+      child[3].style.animationDelay = '0.9s'
+      child[4].style.animationDelay = '0.2s'
+      child[5].style.animationDelay = '0.5s'
+      child[6].style.animationDelay = '0.8s'
       audio.play()
       setisStop(true)
     }
