@@ -6,6 +6,7 @@ const Hello = () => {
 
   const DIV_ELEMENT = useRef<HTMLDivElement>(null)
   const DIV_ELEMENT2 = useRef<HTMLDivElement>(null)
+  const DIV_ELEMENT3 = useRef<HTMLDivElement>(null)
   const INPUT_ELEMENT = useRef<HTMLInputElement>(null)
   const [visible, setVisible]: any = useState(false)
   const [loading, setLoading]: any = useState(false)
@@ -77,6 +78,7 @@ const Hello = () => {
   }
 
   const Play = () => {
+    DIV_ELEMENT3.current!.style.display = 'block'
     const child: any = DIV_ELEMENT.current?.children
     for(let i = 0; i < child.length; i++) { child[i].style.animation = 'animate 1s linear infinite' }
     child[0].style.animationDelay = '0s'
@@ -98,11 +100,12 @@ const Hello = () => {
       audio = new Audio('/hello/mp3/' + playlist[random])
       audio.play()
     })
-
+    if(!isStop) setisStop(true)
   }
   
   const Stop = () => {
     if(audio !== undefined) {
+      DIV_ELEMENT3.current!.style.display = 'none'
       const child: any = DIV_ELEMENT.current?.children
       for(let i = 0; i < child.length; i++) { child[i].style.animation = '' }
       audio.pause()
@@ -111,6 +114,7 @@ const Hello = () => {
   }
   const Restart = () => {
     if(audio !== undefined) {
+      DIV_ELEMENT3.current!.style.display = 'block'
       const child: any = DIV_ELEMENT.current?.children
       for(let i = 0; i < child.length; i++) { child[i].style.animation = 'animate 1s linear infinite' }
       child[0].style.animationDelay = '0s'
@@ -144,7 +148,7 @@ const Hello = () => {
         : null}
       </header>
       <section>
-        <div className='status-wrapper'>
+        <div className='status-wrapper' ref={DIV_ELEMENT3}>
           <div className='music-wave-loader' ref={DIV_ELEMENT}>
               <span></span>
               <span></span>

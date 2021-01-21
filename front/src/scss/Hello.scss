@@ -71,6 +71,7 @@
         height: 80vh;
         flex-direction: column;
         .status-wrapper {
+            display: none;
             .music-wave-loader {
                 height: 20px;
                 display: flex;
