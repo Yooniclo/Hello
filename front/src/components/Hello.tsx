@@ -14,12 +14,14 @@ const Hello = () => {
   const [remove_music, setRemoveMusic]: any = useState(false)
   const [playlist, setPlaylist]: any = useState([])
   const [isStop, setisStop]: any = useState(true)
+  let REMOVE_LIST: any = ''
 
   useEffect(() => { 
     const GetPlayList = async () => {
       const response = await fetch(process.env.REACT_APP_URL + '/init')
       let json = await response.json()
       setPlaylist(json)
+      REMOVE_LIST = json
     }
     GetPlayList()
   }, [])
@@ -215,7 +217,7 @@ const Hello = () => {
                 header
               </div>
               <div className='modal-contents'>
-                {playlist.map((v: any, i:any) => (
+                {REMOVE_LIST.map((v: any, i:any) => (
                 <ul>
                   <li key={i}>{v}</li><span onClick={RemoveMusic}>x</span>
                 </ul>
