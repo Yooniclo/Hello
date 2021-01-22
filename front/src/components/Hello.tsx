@@ -13,15 +13,16 @@ const Hello = () => {
   const [addmusic, setAddmusic]: any = useState(false)
   const [remove_music, setRemoveMusic]: any = useState(false)
   const [playlist, setPlaylist]: any = useState([])
+  const [REMOVE_LIST, SET_REMOVE_LIST]: any = useState([])
   const [isStop, setisStop]: any = useState(true)
-  let REMOVE_LIST: any = ''
+
 
   useEffect(() => { 
     const GetPlayList = async () => {
       const response = await fetch(process.env.REACT_APP_URL + '/init')
       let json = await response.json()
       setPlaylist(json)
-      REMOVE_LIST = json
+      SET_REMOVE_LIST(json)
     }
     GetPlayList()
   }, [])
