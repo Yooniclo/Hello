@@ -238,4 +238,67 @@
             &:hover { background-color: rgba(255, 255, 255, 0.2);}
         }
     }
+    .remove-modal {
+        .modal-overlay {
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+
+            z-index: 999;
+
+        }
+        .modal-wrapper {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            width: 88vw;
+            height: 88vh;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-left: -44vw;
+            margin-top: -44vh;
+            background-color: rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+            border-radius: 10px;
+            .modal-header {
+                height: 40px;
+                line-height: 40px;
+                color: #dbdbdb;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            .modal-contents {
+                ul {
+                    li { 
+                        list-style: none; 
+                        color: #dbdbdb;
+                        height: 35px;
+                        line-height: 35px;
+                        background-color: rgba(255, 255, 255, 0.2);
+                        span {
+                            position: absolute;
+                            right: 8px;
+                            width: 20px;
+                            height: 20px;
+                            line-height: 20px;
+                            border-radius: 10px;
+                            margin-top: 5px;
+                            background-color: rgba(255, 255, 255, 0.2);
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+            .modal-footer {
+                height: 40px;
+                line-height: 40px;
+                color: #dbdbdb;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+                margin-top: auto;
+            }
+        }
+    }
 }

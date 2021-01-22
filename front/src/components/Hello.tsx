@@ -11,6 +11,7 @@ const Hello = () => {
   const [visible, setVisible]: any = useState(false)
   const [loading, setLoading]: any = useState(false)
   const [addmusic, setAddmusic]: any = useState(false)
+  const [remove_music, setRemoveMusic]: any = useState(false)
   const [playlist, setPlaylist]: any = useState([])
   const [isStop, setisStop]: any = useState(true)
 
@@ -130,6 +131,9 @@ const Hello = () => {
     setLoading(false)
   }
 
+  const RemoveMusic = () => {
+    
+  }
 
   return (
     <div id='hello' onClick={CloseSubTag}>
@@ -139,7 +143,7 @@ const Hello = () => {
         {visible?
         <ul>
           <li onClick={()=>setAddmusic(true)}>곡 등록</li>
-          <li>곡 삭제</li>
+          <li onClick={()=>setRemoveMusic(true)}>곡 삭제</li>
         </ul>
         : null}
       </header>
@@ -178,6 +182,25 @@ const Hello = () => {
           <div className='add-result' ref={DIV_ELEMENT2}></div>
           <div className='close-add-music' onClick={CloseAddMusic}>닫기</div>
       </div> 
+      : null }
+      {
+      remove_music?
+      <div className='remove-modal'>
+            <div className='modal-overlay'></div>
+            <div className='modal-wrapper'>
+              <div className='modal-header'>
+                header
+              </div>
+              <div className='modal-contents'>
+                <ul>
+                {playlist.map((v: any, i:any) => (
+                  <li key={i}>{v} <span onClick={RemoveMusic}>x</span></li>
+                ))}
+                </ul>
+              </div>
+              <div className='modal-footer' onClick={()=>setRemoveMusic(false)}>닫기</div>
+            </div>
+      </div>
       : null }
     </div>
   )
