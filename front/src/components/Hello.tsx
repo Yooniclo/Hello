@@ -131,8 +131,31 @@ const Hello = () => {
     setLoading(false)
   }
 
-  const RemoveMusic = () => {
-    
+  const RemoveMusic = async (e: any) => {
+
+    type DeleteDate = {
+      filename: string
+    }
+
+    let data: DeleteDate = {
+      filename: e.target.previousSibling.innerHTML
+    }
+
+    const response = await fetch(process.env.REACT_APP_URL + '/backend/delete', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify(data)
+    })
+    const result = await response.json()
+
+    if(result.message === 'Success') {
+      e.target.previousSibling.remove()
+      e.target.remove()
+    } else {
+
+    }
   }
 
   return (
@@ -194,8 +217,13 @@ const Hello = () => {
               <div className='modal-contents'>
                 <ul>
                 {playlist.map((v: any, i:any) => (
-                  <li key={i}>{v} <span onClick={RemoveMusic}>x</span></li>
+                  <div>
+                    <li key={i}>{v.length > 26 ? v.substr(0, 26) + '...' : v}</li><span onClick={RemoveMusic}>x</span>
+                  </div>
                 ))}
+                {/* <div>
+                <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </div> */}
                 </ul>
               </div>
               <div className='modal-footer' onClick={()=>setRemoveMusic(false)}>닫기</div>

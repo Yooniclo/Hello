@@ -18,21 +18,27 @@ app.use(Bodyparser())
 app.use(router.routes())
 app.use(Serve(Path.join(__dirname, '../public')))
 
-var config = {
-    port: 5000,
-    https: {
-      options: {
-        key: fs.readFileSync(Path.resolve(process.cwd(), '../../https-ssl/privkey1.pem'), 'utf8').toString(),
-        cert: fs.readFileSync(Path.resolve(process.cwd(), '../../https-ssl/fullchain1.pem'), 'utf8').toString()
-      }
-    }
-}
+let config
 
 if(process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined) {
+    config = {
+        port: 5000,
+    }
+    
     app.listen(config.port, () => {
         console.log('server is listening to port 5000 on http')
     })
 } else {
+    config = {
+        port: 5000,
+        https: {
+          options: {
+            key: fs.readFileSync(Path.resolve(process.cwd(), '../../https-ssl/privkey1.pem'), 'utf8').toString(),
+            cert: fs.readFileSync(Path.resolve(process.cwd(), '../../https-ssl/fullchain1.pem'), 'utf8').toString()
+          }
+        }
+    }
+    
     let serverCallback = app.callback()
     let httpsServer = https.createServer(config.https.options, serverCallback)
 
@@ -58,4 +64,9 @@ router.post('/backend/extract', async (ctx: Context) => {
     } catch (e) {
         ctx.body = { message: 'Fail' }
     }
+})
+
+router.delete('/backend/delete', async (ctx: Context) => {
+    const result = await fs.unlinkSync('public/hello/mp3/' + ctx.request.body.filename)
+    result === undefined ? ctx.body = { message: 'Success' } : ctx.body = { message: 'Fail' }
 })
