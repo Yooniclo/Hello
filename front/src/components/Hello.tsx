@@ -12,7 +12,7 @@ const Hello = () => {
   const [loading, setLoading]: any = useState(false)
   const [addmusic, setAddmusic]: any = useState(false)
   const [remove_music, setRemoveMusic]: any = useState(false)
-  const [playlist, setPlaylist]: any = useState([])
+  const [PLAYLIST, SET_PLAY_LIST]: any = useState([])
   const [REMOVE_LIST, SET_REMOVE_LIST]: any = useState([])
   const [isStop, setisStop]: any = useState(true)
 
@@ -21,11 +21,11 @@ const Hello = () => {
     const GetPlayList = async () => {
       const response = await fetch(process.env.REACT_APP_URL + '/init')
       let json = await response.json()
-      setPlaylist(json)
+      SET_PLAY_LIST(json)
       SET_REMOVE_LIST(json)
     }
     GetPlayList()
-  })
+  }, [SET_PLAY_LIST, PLAYLIST])
 
   const CloseSubTag = () => {
     if(visible) setVisible(false)
@@ -94,12 +94,12 @@ const Hello = () => {
     child[6].style.animationDelay = '0.8s'
     if(!isStop) setisStop(true)
 
-    let random = GetRandom(0, playlist.length)
+    let random = GetRandom(0, PLAYLIST.length)
     if(audio !== undefined) audio.pause()
     // audio = new Audio('hello/AKMU - FREEDOM (AUDIO).mp3') <== FOR TEST
-    audio = new Audio('/hello/mp3/' + playlist[random])
+    audio = new Audio('/hello/mp3/' + PLAYLIST[random])
     audio.play()
-    playlist.splice(random, 1)
+    PLAYLIST.splice(random, 1)
     audio.addEventListener('ended', Play)
   }
   
