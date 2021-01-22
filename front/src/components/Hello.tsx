@@ -16,8 +16,6 @@ const Hello = () => {
   const [REMOVE_LIST, SET_REMOVE_LIST]: any = useState([])
   const [isStop, setisStop]: any = useState(true)
 
-
-
   useEffect(() => { 
     const GetPlayList = async () => {
       const response = await fetch(process.env.REACT_APP_URL + '/init')
@@ -135,6 +133,13 @@ const Hello = () => {
     setLoading(false)
   }
 
+  const OpenRemoveModal = () => {
+    setRemoveMusic(true)
+    const button: any = document.querySelectorAll('.control-button')
+    button[0].style.display = 'none'
+    button[1].style.display = 'none'
+  }
+
   const RemoveMusic = async (e: any) => {
 
     type DeleteDate = {
@@ -161,6 +166,12 @@ const Hello = () => {
 
     }
   }
+  const CloseRemoveModal = () => {
+    setRemoveMusic(false)
+    const button: any = document.querySelectorAll('.control-button')
+    button[0].style.display = 'block'
+    button[1].style.display = 'block'
+  }
 
   return (
     <div id='hello' onClick={CloseSubTag}>
@@ -170,7 +181,7 @@ const Hello = () => {
         {visible?
         <ul>
           <li onClick={()=>setAddmusic(true)}>곡 등록</li>
-          <li onClick={()=>setRemoveMusic(true)}>곡 삭제</li>
+          <li onClick={OpenRemoveModal}>곡 삭제</li>
         </ul>
         : null}
       </header>
@@ -187,12 +198,8 @@ const Hello = () => {
           </div>
         </div>
         <div className='control-wrapper'>
-          <button onClick={Play}>PLAY</button>
-          { isStop ?
-            <button onClick={Stop}>STOP</button>
-            :   
-            <button onClick={Restart}>RESTART</button>
-          }
+          <button className='control-button' onClick={Play}>PLAY</button>
+          { isStop ? <button className='control-button' onClick={Stop}>STOP</button> : <button className='control-button' onClick={Restart}>RESTART</button> }
         </div>
       </section>
       <footer>
@@ -202,9 +209,9 @@ const Hello = () => {
       <div className='add-music-wrapper'>
           <input type='text' placeholder='유튜브 링크를 입력하세요' spellCheck={false} ref={INPUT_ELEMENT} onKeyUp={CheckURL} />
           { loading ? 
-          <div className='loading-wrapper'>
-            <div className='loading'></div>
-          </div>
+            <div className='loading-wrapper'>
+              <div className='loading'></div>
+            </div>
           : null }
           <div className='add-result' ref={DIV_ELEMENT2}></div>
           <div className='close-add-music' onClick={CloseAddMusic}>닫기</div>
@@ -231,7 +238,7 @@ const Hello = () => {
                   <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
                 </ul> */}
               </div>
-              <div className='modal-footer' onClick={()=>setRemoveMusic(false)}>닫기</div>
+              <div className='modal-footer' onClick={CloseRemoveModal}>닫기</div>
             </div>
       </div>
       : null }
