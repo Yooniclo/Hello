@@ -215,16 +215,17 @@ const Hello = () => {
                 header
               </div>
               <div className='modal-contents'>
-                <ul>
                 {playlist.map((v: any, i:any) => (
-                  <div>
-                    <li key={i}>{v.length > 26 ? v.substr(0, 26) + '...' : v}</li><span onClick={RemoveMusic}>x</span>
-                  </div>
-                ))}
-                {/* <div>
-                <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
-                </div> */}
+                <ul>
+                  <li key={i}>{v}</li><span onClick={RemoveMusic}>x</span>
                 </ul>
+                ))}
+                {/* <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3asdddddddddddddddddddd</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul> */}
               </div>
               <div className='modal-footer' onClick={()=>setRemoveMusic(false)}>닫기</div>
             </div>
