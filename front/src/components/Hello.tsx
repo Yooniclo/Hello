@@ -216,7 +216,7 @@ const Hello = () => {
             <div className='modal-overlay'></div>
             <div className='modal-wrapper'>
               <div className='modal-header'>
-                header
+                REMOVE LIST
               </div>
               <div className='modal-contents'>
                 {REMOVE_LIST.map((v: any, i:any) => (

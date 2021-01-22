@@ -272,10 +272,11 @@
             }
             .modal-contents {
                 ul {
-                    &:last-of-type li { border: none; }
+                    // &:last-of-type li { border: none; }
                     li { 
                         padding: 0px 35px;
                         list-style: none; 
+                        font-size: 12px;
                         overflow: hidden;
                         color: #dbdbdb;
                         height: 35px;
