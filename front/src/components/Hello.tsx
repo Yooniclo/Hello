@@ -17,6 +17,7 @@ const Hello = () => {
   const [isStop, setisStop]: any = useState(true)
 
 
+
   useEffect(() => { 
     const GetPlayList = async () => {
       const response = await fetch(process.env.REACT_APP_URL + '/init')
@@ -25,7 +26,7 @@ const Hello = () => {
       SET_REMOVE_LIST(json)
     }
     GetPlayList()
-  }, [SET_PLAY_LIST, PLAYLIST])
+  }, [])
 
   const CloseSubTag = () => {
     if(visible) setVisible(false)
