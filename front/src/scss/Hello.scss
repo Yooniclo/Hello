@@ -274,6 +274,7 @@
                 ul {
                     &:last-of-type li { border: none; }
                     li { 
+                        padding-right: 20px;
                         list-style: none; 
                         overflow: hidden;
                         color: #dbdbdb;
