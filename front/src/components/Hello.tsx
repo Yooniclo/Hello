@@ -3,7 +3,7 @@ import '../scss/Hello.scss'
 let audio: any
 
 const Hello = () => {
-
+  
   const DIV_ELEMENT = useRef<HTMLDivElement>(null)
   const DIV_ELEMENT2 = useRef<HTMLDivElement>(null)
   const DIV_ELEMENT3 = useRef<HTMLDivElement>(null)
@@ -25,7 +25,7 @@ const Hello = () => {
       SET_REMOVE_LIST(json)
     }
     GetPlayList()
-  }, [])
+  })
 
   const CloseSubTag = () => {
     if(visible) setVisible(false)
