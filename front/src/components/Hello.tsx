@@ -88,19 +88,15 @@ const Hello = () => {
     child[4].style.animationDelay = '0.2s'
     child[5].style.animationDelay = '0.5s'
     child[6].style.animationDelay = '0.8s'
-    // DIV_ELEMENT.current!.style.height = '50px'
+    if(!isStop) setisStop(true)
 
     let random = GetRandom(0, playlist.length)
     if(audio !== undefined) audio.pause()
     // audio = new Audio('hello/AKMU - FREEDOM (AUDIO).mp3') <== FOR TEST
     audio = new Audio('/hello/mp3/' + playlist[random])
     audio.play()
-    audio.addEventListener('ended', function () {
-      random = GetRandom(0, playlist.length)
-      audio = new Audio('/hello/mp3/' + playlist[random])
-      audio.play()
-    })
-    if(!isStop) setisStop(true)
+    playlist.splice(random, 1)
+    audio.addEventListener('ended', Play)
   }
   
   const Stop = () => {
