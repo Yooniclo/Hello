@@ -15,6 +15,7 @@ const Hello = () => {
   const [PLAYLIST, SET_PLAY_LIST]: any = useState([])
   const [REMOVE_LIST, SET_REMOVE_LIST]: any = useState([])
   const [isStop, setisStop]: any = useState(true)
+  const [isPlay, setisPlay]: any = useState(false)
 
   useEffect(() => { 
     const GetPlayList = async () => {
@@ -91,6 +92,7 @@ const Hello = () => {
     child[4].style.animationDelay = '0.2s'
     child[5].style.animationDelay = '0.5s'
     child[6].style.animationDelay = '0.8s'
+    setisPlay(true)
     if(!isStop) setisStop(true)
 
     let random = GetRandom(0, PLAYLIST.length)
@@ -108,6 +110,7 @@ const Hello = () => {
       const child: any = DIV_ELEMENT.current?.children
       for(let i = 0; i < child.length; i++) { child[i].style.animation = '' }
       audio.pause()
+      setisPlay(false)
       setisStop(false)
     } 
   }
@@ -138,6 +141,7 @@ const Hello = () => {
     const button: any = document.querySelectorAll('.control-button')
     button[0].style.display = 'none'
     button[1].style.display = 'none'
+    DIV_ELEMENT3.current!.style.display = 'none'
   }
 
   const RemoveMusic = async (e: any) => {
@@ -171,6 +175,7 @@ const Hello = () => {
     const button: any = document.querySelectorAll('.control-button')
     button[0].style.display = 'block'
     button[1].style.display = 'block'
+    if(isPlay) DIV_ELEMENT3.current!.style.display = 'block'
   }
 
   return (
