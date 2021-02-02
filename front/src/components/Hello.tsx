@@ -238,12 +238,126 @@ const Hello = () => {
                   <li key={i}>{v}</li><span onClick={RemoveMusic}>x</span>
                 </ul>
                 ))}
-                {/* <ul>
+                <ul>
                   <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
                 </ul>
                 <ul>
                   <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
-                </ul> */}
+                </ul>
+                <ul>
+                  <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>YOU THINK I'M STUPID? YOU THINK I'M CRAZY</li><span onClick={RemoveMusic}>x</span>
+                </ul>
+                <ul>
+                  <li>AKMU - FREEDOM (AUDIO).mp3</li><span onClick={RemoveMusic}>x</span>
+                </ul>
               </div>
               <div className='modal-footer' onClick={CloseRemoveModal}>닫기</div>
             </div>
