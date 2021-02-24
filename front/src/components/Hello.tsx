@@ -39,18 +39,13 @@ const Hello = () => {
     if(INPUT_ELEMENT.current?.value !== '') {
       setLoading(true)
 
-      type Data = {
-        url: string | undefined
-      }
+      type Data = { url: string | undefined }
 
-      let data: Data = {
-        url: INPUT_ELEMENT.current?.value
-      }
+      let data: Data = { url: INPUT_ELEMENT.current?.value }
+
       const response = await fetch(process.env.REACT_APP_URL + '/backend/extract', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8'
-        },
+        headers: {'Content-Type': 'application/json;charset=utf-8'},
         body: JSON.stringify(data)
       })
   
@@ -97,7 +92,7 @@ const Hello = () => {
       if(!isStop) setisStop(true)
       let random = GetRandom(0, PLAYLIST.length)
       if(audio !== undefined) audio.pause()
-      // audio = new Audio('hello/AKMU - FREEDOM (AUDIO).mp3')
+      //audio = new Audio('hello/AKMU - FREEDOM (AUDIO).mp3')
       audio = new Audio('/hello/mp3/' + PLAYLIST[random])
       audio.play()
       PLAYLIST.splice(random, 1)
