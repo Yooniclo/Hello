@@ -82,26 +82,27 @@ const Hello = () => {
   }
 
   const Play = () => {
-    DIV_ELEMENT3.current!.style.display = 'block'
-    const child: any = DIV_ELEMENT.current?.children
-    for(let i = 0; i < child.length; i++) { child[i].style.animation = 'animate 1s linear infinite' }
-    child[0].style.animationDelay = '0s'
-    child[1].style.animationDelay = '0.3s'
-    child[2].style.animationDelay = '0.6s'
-    child[3].style.animationDelay = '0.9s'
-    child[4].style.animationDelay = '0.2s'
-    child[5].style.animationDelay = '0.5s'
-    child[6].style.animationDelay = '0.8s'
-    setisPlay(true)
-    if(!isStop) setisStop(true)
-
-    let random = GetRandom(0, PLAYLIST.length)
-    if(audio !== undefined) audio.pause()
-    // audio = new Audio('hello/AKMU - FREEDOM (AUDIO).mp3') <== FOR TEST
-    audio = new Audio('/hello/mp3/' + PLAYLIST[random])
-    audio.play()
-    PLAYLIST.splice(random, 1)
-    audio.addEventListener('ended', Play)
+    if(PLAYLIST.length !== 0) {
+      DIV_ELEMENT3.current!.style.display = 'block'
+      const child: any = DIV_ELEMENT.current?.children
+      for(let i = 0; i < child.length; i++) { child[i].style.animation = 'animate 1s linear infinite' }
+      child[0].style.animationDelay = '0s'
+      child[1].style.animationDelay = '0.3s'
+      child[2].style.animationDelay = '0.6s'
+      child[3].style.animationDelay = '0.9s'
+      child[4].style.animationDelay = '0.2s'
+      child[5].style.animationDelay = '0.5s'
+      child[6].style.animationDelay = '0.8s'
+      setisPlay(true)
+      if(!isStop) setisStop(true)
+      let random = GetRandom(0, PLAYLIST.length)
+      if(audio !== undefined) audio.pause()
+      // audio = new Audio('hello/AKMU - FREEDOM (AUDIO).mp3')
+      audio = new Audio('/hello/mp3/' + PLAYLIST[random])
+      audio.play()
+      PLAYLIST.splice(random, 1)
+      audio.addEventListener('ended', Play)
+    } 
   }
   
   const Stop = () => {
